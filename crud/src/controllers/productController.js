@@ -1,4 +1,4 @@
-import productRepository from "../models/productModel";
+import productRepository from "../models/productModel.js";
 
 export default class ProductController {
     constructor() {
