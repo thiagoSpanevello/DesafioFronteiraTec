@@ -58,7 +58,7 @@ Certifique-se de ter o **Node.js** (versão LTS) e o gerenciador de pacotes **np
 
 ---
 
-## 📌 Endpoints da API (CRUD)
+## Endpoints da API (CRUD)
 
 Todos os endpoints utilizam a rota base `/products`.
 
