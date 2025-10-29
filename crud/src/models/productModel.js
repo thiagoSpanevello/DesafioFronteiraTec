@@ -34,17 +34,28 @@ class productRepository {
 
     update(id, data) {
         if (!Number.isInteger(id) || id <= 0) throw new Error("Id inválido");
+
         const index = this.#products.findIndex(p => p.id === id);
         if (index === -1) return null;
-        if (data.nome === "" || data.descricao === "") throw new Error("Nome/Descrição não podem ser vazios");
-        if (data.preco != null && (typeof data.preco !== 'number' || data.preco <= 0))
-            throw new Error("Preço deve ser um número positivo");
-        if (data.quantidade != null && (!Number.isInteger(data.quantidade) || data.quantidade <= 0))
-            throw new Error("Quantidade deve ser um inteiro positivo");
 
-        this.#products[index] = { ...this.#products[index], ...data };
-        return this.#products[index];
+        const oldProduct = this.#products[index];
+
+        const updatedProduct = {
+            ...oldProduct,
+            nome: data.nome && data.nome.trim() !== "" ? data.nome : oldProduct.nome,
+            descricao: data.descricao && data.descricao.trim() !== "" ? data.descricao : oldProduct.descricao,
+            preco: (data.preco != null && typeof data.preco === "number" && data.preco > 0)
+                ? data.preco
+                : oldProduct.preco,
+            quantidade: (data.quantidade != null && Number.isInteger(data.quantidade) && data.quantidade > 0)
+                ? data.quantidade
+                : oldProduct.quantidade
+        };
+
+        this.#products[index] = updatedProduct;
+        return updatedProduct;
     }
+
 
     remove(id) {
         if (!Number.isInteger(id) || id <= 0) throw new Error("Id inválido");
