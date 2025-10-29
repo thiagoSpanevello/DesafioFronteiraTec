@@ -40,8 +40,8 @@ Certifique-se de ter o **Node.js** (versão LTS) e o gerenciador de pacotes **np
 
 1.  **Clone o Repositório**:
     ```bash
-    git clone [INSIRA_AQUI_O_LINK_DO_SEU_REPOSITORIO]
-    cd Desafio-FronteiraTec
+    git clone https://github.com/thiagoSpanevello/DesafioFronteiraTec
+    cd DesafioFronteiraTec
     ```
 
 2.  **Instale as Dependências**:
